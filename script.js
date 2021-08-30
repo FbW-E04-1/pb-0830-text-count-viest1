@@ -575,3 +575,40 @@ Arthur remained very worried
  Oh yes   said Arthur   and how far s that   
 
  About twelve minutes away   said Ford   come on  I need a drink   `
+
+ const obj = {};
+ const textSplitted = text.split("");
+ const textOnlyLetters = text.match(/[a-zA-Z]/g);
+
+ // 1. Version only letters(first) or all signs(second)
+
+ textOnlyLetters.map((item) => {
+   if (!obj[item]) {
+     obj[item] = 1;
+   } else {
+     obj[item]++;
+   }
+ });
+ // textSplitted.map((item) => {
+ //   if (!obj[item]) {
+ //     obj[item] = 1;
+ //   } else {
+ //     obj[item]++;
+ //   }
+ // });
+
+ // 2.
+ const sorted = Object.entries(obj).sort((a, b) => b[1] - a[1]);
+ console.log(sorted);
+ console.log(Object.fromEntries(sorted));
+
+ // 3.
+ const lessThan50 = sorted.filter((item) => item[1] > 50);
+ console.log(lessThan50);
+ console.log(Object.fromEntries(lessThan50));
+
+ // 4.
+ const last10 = Object.entries(obj)
+   .sort((a, b) => a[1] - b[1])
+   .filter((item, i) => i < 10);
+ console.log(last10);
